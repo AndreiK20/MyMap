@@ -3,9 +3,10 @@
     <header class="header">
       <HeaderForApp></HeaderForApp>
     </header>
-    <InformatoinForUser  @openPopUp="showPopUp"></InformatoinForUser>
+    <InformatoinForUser @openPopUp="showPopUp"></InformatoinForUser>
     <section class="section">
-      <MapForUse></MapForUse>
+      <MapForUse>
+      </MapForUse>
       <ListOfPlace
         v-bind:information="information"
         @remove="removeCard"
@@ -14,24 +15,36 @@
     </section>
     <Dialog
       v-model:visible="visible"
-      modal header=" "
-      :style="{ width: '80%', height: '70%', border: '2px solid #000',background:'white' }"
+      modal
+      header=" "
+      :style="{
+        width: '80%',
+        height: '70%',
+        border: '2px solid #000',
+        background: 'white',
+      }"
     >
-    <CreateNewForm @create="createForm"></CreateNewForm>
+      <CreateNewForm @create="createForm"></CreateNewForm>
     </Dialog>
-    <Dialog 
+    <Dialog
       v-model:visible="show"
-      modal header=" "
-      :style="{ width: '80%', height: '70%', border: '2px solid #000',background:'white' }"
+      modal
+      header=" "
+      :style="{
+        width: '80%',
+        height: '70%',
+        border: '2px solid #000',
+        background: 'white',
+      }"
     >
-      <FullDataForPlace v-if="selectedItem" class="size" :selectedItem="selectedItem"></FullDataForPlace>
+      <FullDataForPlace
+        v-if="selectedItem"
+        class="size"
+        :selectedItem="selectedItem"
+      ></FullDataForPlace>
     </Dialog>
-    <!-- <div class="map">
-      <yandex-map :coords="mapCoords"> </yandex-map>
-    </div> -->
   </main>
 </template>
-
 
 <script>
 import HeaderForApp from "./components/HeaderForApp.vue";
@@ -42,8 +55,6 @@ import MapForUse from "./components/MapForUse.vue";
 import FullDataForPlace from "./components/FullDataForPlace.vue";
 import axios from "axios";
 
-// import { yandexMap } from "vue-yandex-maps";
-
 export default {
   components: {
     HeaderForApp,
@@ -52,40 +63,33 @@ export default {
     ListOfPlace,
     FullDataForPlace,
     MapForUse,
-    // yandexMap,
   },
   data() {
     return {
       information: [],
-      visible: false, 
+      visible: false,
       show: false,
-      selectedItem : null,
-      // mapCoords: [60.755814, 40.617635], // Координаты местоположения на карте
-      // mapZoom: 10, // Уровень масштабирования карты
+      selectedItem: null,
     };
   },
-
   mounted() {
     this.fetchUsers();
   },
 
   methods: {
-
     selectItem(post) {
       this.selectedItem = post;
-      this.show =  true;
+      this.show = true;
     },
-
 
     createForm(newPlace) {
       newPlace.id = Math.random();
       this.information.push(newPlace);
       this.visible = false;
     },
- 
 
-    showPopUp (value){
-      this.visible =  value;
+    showPopUp(value) {
+      this.visible = value;
     },
 
     removeCard(post) {
@@ -107,7 +111,6 @@ export default {
 </script>
 
 <style>
-
 * {
   margin: 0;
   padding: 0;
@@ -133,4 +136,3 @@ export default {
   height: 900px;
 }
 </style>
-

@@ -105,8 +105,8 @@ export default {
         this.newPlace.address.suite &&
         this.newPlace.phone &&
         this.newPlace.website &&
-        this.newPlace.geo.lat &&
-        this.newPlace.geo.lng
+        this.newPlace.address.geo.lat &&
+        this.newPlace.address.geo.lng
       ) {
         this.$emit("create", this.newPlace);
         this.newPlace = {

@@ -1,22 +1,38 @@
 <template>
   <div class="map">
-    <div id="app">
-      <yandex-map :coords="coords" :zoom="10">
-        <ymap-marker
+    <!-- здесь id="app" явно не нужен -->
+    <div> 
+      <yandex-map 
+        :coords="coords" 
+        :zoom="10" 
+        :settings="settings"
+      >
+        <!-- <ymap-marker
           :coords="coords"
           marker-id="123"
           hint-content="some hint"
-        />
+        /> -->
       </yandex-map>
     </div>
   </div>
 </template>
 
 <script>
+import { yandexMap } from 'vue-yandex-maps';
+
 export default {
+  components: { yandexMap },
+
   data() {
     return {
       coords: [54.82896654088406, 39.831893822753904],
+      settings: {
+        apiKey: "dbce3460-d1df-40bb-a4fe-b12ffed9ac66",
+        lang: "ru_RU",
+        coordorder: "latlong",
+        enterprise: false,
+        version: "2.1",
+      }
     };
   },
 };

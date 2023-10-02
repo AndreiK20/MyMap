@@ -7,6 +7,8 @@
       <div>
         <p><strong>Название:</strong>{{ post.name }}</p>
         <p>
+          <!-- попробуй при создании формы сделать поля адреса, улицы и все, что внутри address необязательными для заполнения. 
+            строку ниже придется доработать -->
           <strong>Адрес:</strong>{{ post.address.city }},{{ post.address.street}},{{ post.address.suite }}
         </p>
         <p><strong>Телефон:</strong> {{ post.phone }}</p>

@@ -1,8 +1,10 @@
 <template>
   <main class="main">
     <header class="header">
+      <!-- если внутри компонента ничего нет, достаточно писать так <HeaderForApp /> -->
       <HeaderForApp></HeaderForApp>
     </header>
+    <!-- пропсы и эмиты лучше писать в kebab case (@open-pop-up) -->
     <InformatoinForUser @openPopUp="showPopUp"></InformatoinForUser>
     <section class="section">
       <MapForUse>
@@ -75,6 +77,11 @@ export default {
   mounted() {
     this.fetchUsers();
   },
+
+  // fetchUsers асинхронная функция, а отправляется синхронно
+  // async mounted() {
+  //   await this.fetchUsers();
+  // },
 
   methods: {
     selectItem(post) {
